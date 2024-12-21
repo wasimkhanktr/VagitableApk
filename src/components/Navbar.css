@@ -9,6 +9,7 @@
 }
 
 .nav-item {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,6 +23,19 @@
 
 .nav-item span {
   display: none; /* Hide text everywhere */
+}
+
+/* Cart Item Count Styles */
+.nav-item .cart-item-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 /* Desktop and Laptop Navbar */
@@ -63,4 +77,18 @@
   .navbar {
     display: flex; /* Show navbar on desktop and laptop */
   }
+}
+
+/* Cart Item Count Styles */
+.nav-item .cart-item-count {
+  position: absolute;
+  top: -10px;
+  right: -25px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  display: block; /* Make sure it's visible */
 }

@@ -1,6 +1,12 @@
+import React, { useState } from "react";
+import VegetableModal from "./VegetableModal";
 import "./Home.css";
 
 const Home = ({ cart, setCart }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentVeg, setCurrentVeg] = useState(null);
+  const [quantity, setQuantity] = useState(1);
+
   const vegetables = [
     { name: "Tomato", image: "https://www.fast2cart.com/media/catalog/product/cache/2fe2ed80b1a259a48c3b14a959cc70e8/f/2/f2c-fresh-tomato_1.jpg", cost: 20, discountPercent: 10, realPrice: 22.22 },
     { name: "Potato", image: "https://www.fast2cart.com/media/catalog/product/cache/2fe2ed80b1a259a48c3b14a959cc70e8/f/2/f2c-fresh-potato-red.jpg", cost: 15, discountPercent: 5, realPrice: 15.79 },
@@ -24,30 +30,58 @@ const Home = ({ cart, setCart }) => {
     { name: "Corn", image: "https://www.fast2cart.com/media/catalog/product/cache/2fe2ed80b1a259a48c3b14a959cc70e8/f/2/f2c-fresh-sweet-corn.jpg", cost: 40, discountPercent: 10, realPrice: 44.44 },
   ];
 
+
   const formattedVegetables = vegetables.map((veg) => ({
     ...veg,
     realPrice: veg.realPrice.toFixed(2),
   }));
 
-  const addToCart = (veg) => {
-    setCart((prevCart) => [...prevCart, veg]);
+  const openModal = (veg) => {
+    setCurrentVeg(veg);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const addToCart = (veg, quantity) => {
+    const item = { ...veg, quantity };
+    setCart((prevCart) => [...prevCart, item]);
+    closeModal();
+  };
+
+  const handleBuyNow = (veg, quantity) => {
+    addToCart(veg, quantity);
+    alert("Proceeding to checkout");
   };
 
   return (
     <div>
-      <h1>Vegetables</h1>
+      {/* <h1>Vegetables</h1> */}
       <div className="vegetable-grid">
         {formattedVegetables.map((veg, index) => (
-          <div key={index} className="vegetable-card">
+          <div key={index} className="vegetable-card" onClick={() => openModal(veg)}>
             <img src={veg.image} alt={veg.name} />
             <h3>{veg.name}</h3>
             <p>Cost: ₹{veg.cost}</p>
             <p>Discount: {veg.discountPercent}%</p>
             <p>Original Price: ₹{veg.realPrice}</p>
-            <button onClick={() => addToCart(veg)}>Add to Cart</button>
+            <button onClick={() => addToCart(veg, quantity)}>Add to Cart</button>
           </div>
         ))}
       </div>
+
+      {/* Modal for Vegetable */}
+      <VegetableModal
+        vegetable={currentVeg}
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        onAddToCart={addToCart}
+        onBuyNow={handleBuyNow}
+        quantity={quantity}
+        setQuantity={setQuantity}
+      />
     </div>
   );
 };

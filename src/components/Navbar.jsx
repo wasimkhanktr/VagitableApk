@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = ({ cart }) => {
+  // Check if cart is an array and calculate the total number of items in the cart
+  const totalItems = Array.isArray(cart) ? cart.reduce((acc, item) => acc + (item.quantity || 0), 0) : 0;
+
   return (
     <>
       {/* Desktop and Laptop Navbar */}
@@ -21,6 +24,9 @@ const Navbar = ({ cart }) => {
         </Link>
         <Link to="/cart" className="nav-item">
           <i className="fas fa-shopping-cart"></i>
+          {totalItems > 0 && (
+            <span className="cart-item-count">{totalItems}</span>
+          )}
         </Link>
       </nav>
 
@@ -40,6 +46,9 @@ const Navbar = ({ cart }) => {
         </Link>
         <Link to="/cart" className="nav-item">
           <i className="fas fa-shopping-cart"></i>
+          {totalItems > 0 && (
+            <span className="cart-item-count">{totalItems}</span>
+          )}
         </Link>
       </div>
     </>
