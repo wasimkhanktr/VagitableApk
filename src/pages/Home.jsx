@@ -17,7 +17,7 @@ const Home = ({ cart, setCart }) => {
     { name: "Pumpkin", image: "https://www.fast2cart.com/media/catalog/product/cache/2fe2ed80b1a259a48c3b14a959cc70e8/f/2/f2c-fresh-pumpkin.jpg", cost: 25, discountPercent: 10, realPrice: 27.78 },
     { name: "Lettuce", image: "https://www.fast2cart.com/media/catalog/product/cache/2fe2ed80b1a259a48c3b14a959cc70e8/f/2/f2c-fresh-lettuce.jpg", cost: 45, discountPercent: 15, realPrice: 52.94 },
     { name: "Beetroot", image: "https://www.fast2cart.com/media/catalog/product/cache/2fe2ed80b1a259a48c3b14a959cc70e8/f/2/f2c-fresh-beetroot.jpg", cost: 28, discountPercent: 5, realPrice: 29.47 },
-    { name: "Bottle Gourd", image: "https://www.fast2cart.com/media/catalog/product/cache/2fe2ed80b1a259a48c3b14a959cc70e8/f/2/f2c-fresh-bottle-gourd.jpg", cost: 22, discountPercent: 8, realPrice: 23.91 },
+    { name: "Bottle Gourd", image: "https://www.fast2cart.com/media/catalog/product/cache/2fe2ed80b1a259a48c3b14a959cc70e8/f/2/f2c-fresh-karela.jpg", cost: 22, discountPercent: 8, realPrice: 23.91 },
     { name: "Green Beans", image: "https://www.fast2cart.com/media/catalog/product/cache/2fe2ed80b1a259a48c3b14a959cc70e8/f/2/f2c-fresh-green-beans.jpg", cost: 35, discountPercent: 10, realPrice: 38.89 },
     { name: "Peas", image: "https://www.fast2cart.com/media/catalog/product/cache/2fe2ed80b1a259a48c3b14a959cc70e8/f/2/f2c-fresh-green-peas.jpg", cost: 50, discountPercent: 15, realPrice: 58.82 },
     { name: "Okra", image: "https://www.fast2cart.com/media/catalog/product/cache/2fe2ed80b1a259a48c3b14a959cc70e8/f/2/f2c-fresh-okra.jpg", cost: 30, discountPercent: 5, realPrice: 31.58 },
