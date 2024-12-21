@@ -1,5 +1,5 @@
 // src/App.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -9,15 +9,21 @@ import AdminLogin from './pages/AdminLogin';
 import Cart from './pages/Cart';
 
 const App = () => {
+  // Initialize cart state
+  const [cart, setCart] = useState([]);
+
   return (
     <Router>
-      <Navbar />
+      {/* Pass cart to Navbar */}
+      <Navbar cart={cart} />
+
       <Routes>
-        <Route path="/" element={<Home />} />
+        {/* Pass cart and setCart to Home and Cart */}
+        <Route path="/" element={<Home cart={cart} setCart={setCart} />} />
         <Route path="/search" element={<Search />} />
         <Route path="/user-login" element={<UserLogin />} />
         <Route path="/admin-login" element={<AdminLogin />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
       </Routes>
     </Router>
   );

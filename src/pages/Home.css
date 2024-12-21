@@ -11,6 +11,8 @@ h1, h2 {
   color: #333;
 }
 
+
+
 .vegetable-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* Always 4 columns */

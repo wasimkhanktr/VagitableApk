@@ -1,10 +1,6 @@
-import React, { useState } from "react";
 import "./Home.css";
 
-
-const Home = () => {
-  const [cart, setCart] = useState([]);
-
+const Home = ({ cart, setCart }) => {
   const vegetables = [
     { name: "Tomato", image: "https://www.fast2cart.com/media/catalog/product/cache/2fe2ed80b1a259a48c3b14a959cc70e8/f/2/f2c-fresh-tomato_1.jpg", cost: 20, discountPercent: 10, realPrice: 22.22 },
     { name: "Potato", image: "https://www.fast2cart.com/media/catalog/product/cache/2fe2ed80b1a259a48c3b14a959cc70e8/f/2/f2c-fresh-potato-red.jpg", cost: 15, discountPercent: 5, realPrice: 15.79 },
@@ -26,8 +22,12 @@ const Home = () => {
     { name: "Peas", image: "https://www.fast2cart.com/media/catalog/product/cache/2fe2ed80b1a259a48c3b14a959cc70e8/f/2/f2c-fresh-green-peas.jpg", cost: 50, discountPercent: 15, realPrice: 58.82 },
     { name: "Okra", image: "https://www.fast2cart.com/media/catalog/product/cache/2fe2ed80b1a259a48c3b14a959cc70e8/f/2/f2c-fresh-okra.jpg", cost: 30, discountPercent: 5, realPrice: 31.58 },
     { name: "Corn", image: "https://www.fast2cart.com/media/catalog/product/cache/2fe2ed80b1a259a48c3b14a959cc70e8/f/2/f2c-fresh-sweet-corn.jpg", cost: 40, discountPercent: 10, realPrice: 44.44 },
-    // Add more vegetables following the same pattern...
   ];
+
+  const formattedVegetables = vegetables.map((veg) => ({
+    ...veg,
+    realPrice: veg.realPrice.toFixed(2),
+  }));
 
   const addToCart = (veg) => {
     setCart((prevCart) => [...prevCart, veg]);
@@ -37,31 +37,17 @@ const Home = () => {
     <div>
       <h1>Vegetables</h1>
       <div className="vegetable-grid">
-        {vegetables.map((veg, index) => (
+        {formattedVegetables.map((veg, index) => (
           <div key={index} className="vegetable-card">
             <img src={veg.image} alt={veg.name} />
             <h3>{veg.name}</h3>
             <p>Cost: ₹{veg.cost}</p>
             <p>Discount: {veg.discountPercent}%</p>
-            <p>Original Price: ₹{veg.realPrice.toFixed(2)}</p>
+            <p>Original Price: ₹{veg.realPrice}</p>
             <button onClick={() => addToCart(veg)}>Add to Cart</button>
           </div>
         ))}
       </div>
-
-      <h2>Cart</h2>
-      {cart.length === 0 ? (
-        <p>Your cart is empty</p>
-      ) : (
-        <div className="cart-items">
-          {cart.map((item, index) => (
-            <div key={index} className="cart-item">
-              <h4>{item.name}</h4>
-              <p>Cost: ₹{item.cost}</p>
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   );
 };

@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css'; // Optional: Add styles here
 
-const Navbar = () => {
+const Navbar = ({ cart }) => {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
@@ -14,7 +14,7 @@ const Navbar = () => {
         <li><Link to="/search">Search</Link></li>
         <li><Link to="/user-login">User Login</Link></li>
         <li><Link to="/admin-login">Admin Login</Link></li>
-        <li><Link to="/cart">Add to Cart</Link></li>
+        <li><Link to="/cart">Add to Cart({cart.length})</Link></li>
       </ul>
     </nav>
   );
